@@ -7,6 +7,7 @@ import { CompleteAllComponent } from './components/complete-all/complete-all.com
 import { TodosListComponent } from './components/todo-list/todo-list.component';
 import { TodosService } from './services/todos.service';
 import { todosReducer } from './state/todos.reducer';
+import { TodoItemComponent } from './components/todo-item/todo-item.component';
 
 const DECLARATIONS = [
   CompleteAllComponent,
@@ -16,6 +17,7 @@ const DECLARATIONS = [
 @NgModule({
   declarations: [
     ...DECLARATIONS,
+    TodoItemComponent,
   ],
   exports: [
     ...DECLARATIONS,
