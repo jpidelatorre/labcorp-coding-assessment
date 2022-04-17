@@ -14,11 +14,11 @@ export class TodoItemComponent {
   @Input()
   get item (): ITodo { return this._item; }
   set item (value: ITodo) {
-    this.completed = value.completed ? 'completed' : null;
+    this.completed = value.completed;
     this._item = value;
   }
 
-  @HostBinding('class') completed: string;
+  @HostBinding('class.completed') completed = false;
 
   @HostListener('click') click () {
     this.onToggle.emit();

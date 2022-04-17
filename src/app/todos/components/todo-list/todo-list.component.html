@@ -1,10 +1,6 @@
-<ul class="todo-list">
-  <li>
-    <app-todo-item
-      *ngFor="let todo of todos | async; let i = index"
-      [item]="todo"
-      (onDelete)="remove(i)"
-      (onToggle)="toggle(i)"
-    ></app-todo-item>
-  </li>
-</ul>
+<app-todo-item
+  *ngFor="let todo of todos | async; let i = index"
+  [item]="todo"
+  (onDelete)="remove(i)"
+  (onToggle)="toggle(i)"
+></app-todo-item>

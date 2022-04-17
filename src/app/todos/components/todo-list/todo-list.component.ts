@@ -1,7 +1,9 @@
+import { combineLatest, map, Observable } from 'rxjs';
 import { Component } from '@angular/core';
+
 import { ITodo } from '@app/todos/interfaces';
 import { TodosService } from '@app/todos/services/todos.service';
-import { Observable, tap } from 'rxjs';
+import { FILTER_MODES } from '@app/todos/constants/filter-modes';
 
 @Component({
   selector: 'app-todos-list',
@@ -16,7 +18,18 @@ export class TodosListComponent {
   constructor (
     public service: TodosService,
   ) {
-    this.todos = this.service.allTodos$;
+    this.todos = combineLatest([
+      this.service.allTodos$,
+      this.service.filterMode$,
+    ]).pipe(
+      map(([todos, filter]) =>
+        filter === FILTER_MODES.All ?
+          todos :
+          todos.filter(todo =>
+            todo.completed === (filter === FILTER_MODES.Completed)
+          )
+      )
+    );
   }
 
   remove (index: number) {
