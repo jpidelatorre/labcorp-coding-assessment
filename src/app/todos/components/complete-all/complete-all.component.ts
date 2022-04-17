@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, ChangeDetectionStrategy, Component, OnInit, OnDestroy, HostListener, HostBinding } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { TodosService } from '@app/todos/services/todos.service';
@@ -9,22 +9,33 @@ import { TodosService } from '@app/todos/services/todos.service';
   styleUrls: [
     './complete-all.component.scss',
   ],
-  templateUrl: './complete-all.component.html',
+  template: '&#x276f;',
 })
 export class CompleteAllComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
 
-  multipleTodosExist = false;
-  subscription: Subscription;
+  @HostBinding('class.visible') visible = false;
+  @HostBinding('class.allCompleted') allCompleted = false;
+
+  @HostBinding() title = 'Mark all as complete';
+
+  @HostListener('click')
+  toggleCompleteAll(): void {
+    this.todosService.toggleAllCompleted();
+  }
 
   constructor (
-    private changeDetectorRef: ChangeDetectorRef,
     private todosService: TodosService,
   ) {}
 
   ngOnInit(): void {
     this.subscription = this.todosService.allTodos$.subscribe(todos => {
-      this.multipleTodosExist = todos && todos.length > 1;
-      this.changeDetectorRef.markForCheck();
+      if (todos && todos.length) {
+        this.visible = true;
+        this.allCompleted = todos.every(({ completed }) => completed);
+      } else {
+        this.visible = this.allCompleted = false;
+      }
     });
   }
 
@@ -32,10 +43,6 @@ export class CompleteAllComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-  }
-
-  toggleCompleteAll(): void {
-    this.todosService.toggleAllCompleted();
   }
 
 }
