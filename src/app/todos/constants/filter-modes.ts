@@ -1,1 +1,5 @@
-export type FILTER_MODES = 'All' | 'Active' | 'Completed';
+export enum FILTER_MODES {
+  'All' = 'All',
+  'Active' = 'Active',
+  'Completed' = 'Completed',
+};

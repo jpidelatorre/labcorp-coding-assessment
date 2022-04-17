@@ -5,12 +5,12 @@ import { FILTER_MODES } from './../constants/filter-modes';
 import { ITodo } from '../interfaces/ITodo';
 
 export interface ITodosState {
-  filterMode?: FILTER_MODES;
+  filterMode: FILTER_MODES;
   todos?: ITodo[];
 }
 
 export const initialState: ITodosState = {
-  filterMode: 'All',
+  filterMode: FILTER_MODES.All,
   todos: [],
 };
 
@@ -53,5 +53,5 @@ export function todosReducer(state: ITodosState, action: Action) {
   )(state, action);
 }
 
-export const filterMode = (state: ITodosState) => state.filterMode;
 export const todos = (state: ITodosState) => state.todos;
+export const filterMode = (state: ITodosState) => (state && state.filterMode);

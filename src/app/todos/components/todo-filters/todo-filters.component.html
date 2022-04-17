@@ -1,0 +1,5 @@
+<button
+  *ngFor="let mode of modes"
+  [class.selected]="selected === mode"
+  (click)="service.changeFilterMode(mode)"
+>{{mode}}</button>
