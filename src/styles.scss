@@ -1,0 +1,54 @@
+
+// https://elad2412.github.io/the-new-css-reset/
+
+*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+  cursor: revert;
+
+  overflow-wrap: break-word;
+
+  color: inherit;
+  font: inherit;
+
+  user-select: none;
+
+  // TODO: Check if they work
+  // Font rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+// Defaults
+*, *::before, *::after { box-sizing: border-box; }
+// table { border-collapse: collapse; } // Not in use
+// ol, ul, menu { list-style: none; }   // Not in use
+// img { max-width: 100%; }             // Not in use
+h1, h2 { text-rendering: optimizeLegibility; }
+
+// Revert
+// textarea { white-space: revert; }  // Not in use
+// meter { appearance: revert; }      // Not in use
+::placeholder { color: unset; }
+:where([hidden]) { display: none; }
+[contenteditable], input, textarea { user-select: all; }
+
+:root {
+  color: #4d4d4d;
+  background: #f5f5f5;
+  font: 300 11pt 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.3;
+  min-width: 230px;
+  max-width: 550px;
+  margin: 0 auto;
+
+  left: 150px;
+  position: relative;
+}
+
+input::placeholder {
+  font-style: italic;
+  font-weight: 300;
+  color: #e6e6e6;
+}
