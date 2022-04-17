@@ -1,28 +1,17 @@
+<h1>todos</h1>
+
 <main class="todoapp">
-  <header class="header">
-    <h1>todos</h1>
-    <form enctype="application/x-www-form-urlencoded" role="form" novalidate>
-      <input class="new-todo" placeholder="What needs to be done" autofocus>
-    </form>
+  <header>
+    <app-complete-all></app-complete-all>
+    <app-item-input [placeholder]="'What needs to be done?'" (submit)="addTodo($event)"></app-item-input>
   </header>
   <section class="main">
-    <app-complete-all></app-complete-all>
     <app-todos-list></app-todos-list>
   </section>
-  <footer class="footer">
-    <span class="todo-count"></span>
-    <ul class="filters">
-      <li>
-        <a href="#" class="selected">All</a>
-      </li>
-      <li>
-        <a href="#">Active</a>
-      </li>
-      <li>
-        <a href="#" >Completed</a>
-      </li>
-    </ul>
-    <button class="clear-completed">Clear completed</button>
+  <footer>
+    <app-todo-count></app-todo-count>
+    <app-todo-filters></app-todo-filters>
+    <a (click)="clearDone()">Clear completed</a>
   </footer>
 </main>
 <footer class="info">

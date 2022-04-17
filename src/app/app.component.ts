@@ -5,17 +5,18 @@ import { TodosService } from './todos/services/todos.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent {
   constructor (
     private todosService: TodosService,
   ) {}
 
-  addTodo (input: HTMLInputElement) {
-    if (input.value) {
-      this.todosService.addTodo(input.value);
-      input.value = '';
-    }
+  addTodo (input: string) {
+    this.todosService.addTodo(input);
   }
 
+  clearDone () {
+    this.todosService.clearCompleted();
+  }
 }
