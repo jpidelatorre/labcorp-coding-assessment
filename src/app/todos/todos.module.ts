@@ -12,6 +12,7 @@ import { ItemInputComponent } from './components/item-input/item-input.component
 import { TodoFiltersComponent } from './components/todo-filters/todo-filters.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoCountComponent } from './components/todo-count/todo-count.component';
+import { CheckmarkComponent } from './components/checkmark/checkmark.component';
 
 const DECLARATIONS = [
   CompleteAllComponent,
@@ -25,6 +26,7 @@ const DECLARATIONS = [
 @NgModule({
   declarations: [
     ...DECLARATIONS,
+    CheckmarkComponent,
   ],
   exports: [
     ...DECLARATIONS,

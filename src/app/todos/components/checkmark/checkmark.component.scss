@@ -1,0 +1,33 @@
+:host {
+  position: relative;
+
+  display: block;
+  width: 1.4em;
+  height: 1.4em;
+  margin: 0.5em;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  &::before {
+    border-radius: 50%;
+    border: .05em solid var(--borderColor);
+  }
+
+  &::after {
+    opacity: 0;
+    inset: .53em .3em;
+
+    border: 0 solid var(--selectedColor);
+    border-width: 0 0 .08em .08em;
+    transform: rotate(-55deg) skewX(-15deg) translate(10%, -10%);
+  }
+}
+
+:host-context([checked]) {
+  &::before { border-color: #bddad5; }
+  &::after { opacity: 1; }
+}

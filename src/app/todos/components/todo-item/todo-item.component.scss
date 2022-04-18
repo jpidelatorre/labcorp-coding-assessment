@@ -1,37 +1,12 @@
 :host {
+  --selectedColor: #5dc2af;
+
   display: flex;
   position: relative;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid var(--borderColor);
 
   &:hover .destroy {
     opacity: 1;
-  }
-}
-
-.checkmark {
-  position: relative;
-  width: 1.4em;
-  height: 1.4em;
-  margin: 0.5em;
-
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-  }
-
-  &::before {
-    border-radius: 50%;
-    border: .05em solid #ededed;
-  }
-
-  &::after {
-    opacity: 0;
-    inset: .53em .3em;
-
-    border: 0 solid #5dc2af;
-    border-width: 0 0 .08em .08em;
-    transform: rotate(-55deg) skewX(-15deg) translate(10%, -10%);
   }
 }
 
@@ -68,13 +43,8 @@ input {
 }
 
 :host.completed {
-  .checkmark {
-    &::before { border-color: #bddad5; }
-    &::after { opacity: 1; }
-  }
-
   span {
-    color: #d9d9d9;
+    color: var(--dimColor);
     text-decoration: line-through;
   }
 }
