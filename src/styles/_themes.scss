@@ -1,0 +1,37 @@
+:root {
+  --bgColor: #f5f5f5;
+  --fgColor: #777;
+  --dimColor: #bfbfbf;
+  --headingColor: #af2f2f26;
+  --borderColor: #e6e6e6;
+
+  // Shades
+  --white: #fff;
+  --black: #000;
+  --grey: #666;
+  --grey1: #bfbfbf;
+
+
+  // Transparent
+  --white50: #fff8;
+  --black05: #0001;
+  --black10: #0002;
+  --black20: #0003;
+  --black30: #0005;
+
+  // Checkmark
+  --selectedColor: #5dc2af;
+  --selectedBorderColor: #bddad5;
+
+  --baseFont: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+:root.dark {
+  --bgColor: #777;
+  --fgColor: #f5f5f5;
+  --headingColor: #f555;
+
+  main {
+    --fgColor: #777;
+  }
+}

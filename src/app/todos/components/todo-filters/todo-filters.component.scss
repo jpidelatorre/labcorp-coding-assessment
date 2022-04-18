@@ -1,6 +1,7 @@
 :host {
   display: flex;
   justify-content: space-evenly;
+  color: var(--fgColor);
 }
 
 button {
@@ -12,10 +13,10 @@ button {
   cursor: pointer;
 
   &:hover {
-    border-color: rgba(175, 47, 47, 0.1);
+    border-color: #a332;
   }
   
   &.selected {
-    border-color: rgba(175, 47, 47, 0.2);
+    border-color: #a333;
   }
 }

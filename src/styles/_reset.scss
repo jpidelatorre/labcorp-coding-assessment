@@ -1,0 +1,28 @@
+
+// https://elad2412.github.io/the-new-css-reset/
+
+*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+  cursor: revert;
+
+  overflow-wrap: break-word;
+
+  color: inherit;
+  font: inherit;
+
+  user-select: none;
+
+  // Font rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Defaults
+*, *::before, *::after { box-sizing: border-box; }
+h1, h2 { text-rendering: optimizeLegibility; }
+
+// Revert
+::placeholder { color: unset; }
+:where([hidden]) { display: none; }
+[contenteditable], input, textarea { user-select: all; }

@@ -1,3 +1,6 @@
 :host {
-  text-align: left;
+  color: var(--fgColor);
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }

@@ -28,6 +28,6 @@
 }
 
 :host-context([checked]) {
-  &::before { border-color: #bddad5; }
+  &::before { border-color: var(--selectedBorderColor); }
   &::after { opacity: 1; }
 }

@@ -6,7 +6,7 @@
   width: 2.7em;
 
   font-size: 1.4rem;
-  color: #e6e6e6;
+  color: var(--dimColor);
   cursor: pointer;
   opacity: 0;
   transform: rotate(90deg);
@@ -16,6 +16,6 @@
   }
   
   &.allCompleted {
-    color: #666;
+    color: var(--grey);
   }
 }

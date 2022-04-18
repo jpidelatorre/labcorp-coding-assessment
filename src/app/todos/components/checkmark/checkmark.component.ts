@@ -2,7 +2,7 @@ import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-checkmark',
-  templateUrl: './checkmark.component.html',
+  template: '',
   styleUrls: ['./checkmark.component.scss']
 })
 export class CheckmarkComponent {
