@@ -11,7 +11,7 @@ export class TodoCountComponent {
   count$: Observable<number>
 
   constructor(
-    private service: TodosService,
+    service: TodosService,
   ) {
     this.count$ = service.allTodos$.pipe(
       map(

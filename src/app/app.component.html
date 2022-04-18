@@ -7,7 +7,7 @@
     <app-item-input [placeholder]="'What needs to be done?'" (submit)="addTodo($event)"></app-item-input>
   </header>
   <app-todos-list></app-todos-list>
-  <footer>
+  <footer *ngIf="populated$ | async">
     <app-todo-count></app-todo-count>
     <app-todo-filters></app-todo-filters>
     <a (click)="clearDone()">Clear completed</a>
