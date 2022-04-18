@@ -7,12 +7,14 @@ import { TodosService } from './services/todos.service';
 import { todosReducer } from './state/todos.reducer';
 
 import { CompleteAllComponent } from './components/complete-all/complete-all.component';
-import { TodosListComponent } from './components/todo-list/todo-list.component';
 import { ItemInputComponent } from './components/item-input/item-input.component';
-import { TodoFiltersComponent } from './components/todo-filters/todo-filters.component';
+
+import { TodosListComponent } from './components/todo-list/todo-list.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
-import { TodoCountComponent } from './components/todo-count/todo-count.component';
 import { CheckmarkComponent } from './components/checkmark/checkmark.component';
+
+import { TodoFiltersComponent } from './components/todo-filters/todo-filters.component';
+import { TodoCountComponent } from './components/todo-count/todo-count.component';
 
 const DECLARATIONS = [
   CompleteAllComponent,
@@ -21,12 +23,12 @@ const DECLARATIONS = [
   ItemInputComponent,
   TodoFiltersComponent,
   TodoCountComponent,
+  CheckmarkComponent,
 ];
 
 @NgModule({
   declarations: [
     ...DECLARATIONS,
-    CheckmarkComponent,
   ],
   exports: [
     ...DECLARATIONS,

@@ -8,11 +8,11 @@
   autofocus
   [value]="text"
   [disabled]="!editable"
-  (blur)="cancel()"
+  (blur)="update()"
 >
 
 <span
-  (dblclick)="completed || edit()"
+  (dblclick)="edit()"
 >{{ text }}</span>
 
 <button
