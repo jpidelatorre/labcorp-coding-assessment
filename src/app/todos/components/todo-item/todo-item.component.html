@@ -1,2 +1,21 @@
-<span>&MediumSpace;{{ item.text }}&MediumSpace;</span>
-<button class="destroy" (click)="onDelete.emit()">&#xd7;</button>
+<button
+  class="checkmark"
+  (click)="editable || toggle()"
+></button>
+
+<input
+  #Input
+  autofocus
+  [value]="text"
+  [disabled]="!editable"
+  (blur)="cancel()"
+>
+
+<span
+  (dblclick)="completed || edit()"
+>{{ text }}</span>
+
+<button
+  class="destroy"
+  (click)="onDelete.emit()"
+>&#xd7;</button>

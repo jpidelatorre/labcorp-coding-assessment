@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { ITodo } from '@app/todos/interfaces';
 import { TodosService } from '@app/todos/services/todos.service';
 
@@ -11,25 +11,47 @@ export class TodoItemComponent {
   @Output() onToggle: EventEmitter<void> = new EventEmitter
   @Output() onDelete: EventEmitter<void> = new EventEmitter
 
+  @Input() index: number;
   @Input()
-  get item (): ITodo { return this._item; }
   set item (value: ITodo) {
     this.completed = value.completed;
-    this._item = value;
+    this.text = value.text;
   }
 
+  @ViewChild('Input') input: ElementRef<HTMLInputElement>;
   @HostBinding('class.completed') completed = false;
+  @HostBinding('class.editable') editable = false;
+  text: string;
+  clickCount = 0;
 
-  @HostListener('click') click () {
+  @HostListener('keyup.enter') enter () {
+    this.update();
+  }
+
+  @HostListener('keyup.escape') escape () {
+    this.cancel();
+  }
+
+  constructor(
+    private service: TodosService,
+  ) { }
+
+  toggle () {
     this.onToggle.emit();
   }
 
-  @HostListener('dblclick') dblclick () {
-    // TODO: edit
+  edit () {
+    this.editable = true;
+    setTimeout(() => {
+      this.input.nativeElement.focus();
+    }, 0);
   }
 
-  private _item!: ITodo;
-
-  constructor() { }
-
+  update () {
+    this.service.updateTodo(this.index, this.input.nativeElement.value);
+  }
+  
+  cancel () {
+    this.editable = false;
+  }
 }

@@ -1,6 +1,7 @@
 <app-todo-item
   *ngFor="let todo of todos | async; let i = index"
   [item]="todo"
+  [index]="i"
   (onDelete)="remove(i)"
   (onToggle)="toggle(i)"
 ></app-todo-item>

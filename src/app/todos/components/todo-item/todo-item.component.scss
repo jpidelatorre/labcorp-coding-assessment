@@ -2,29 +2,47 @@
   display: flex;
   position: relative;
   border-bottom: 1px solid #ededed;
-  padding: 6px 0 6px 60px;
-
-  background: 7px center / 35px no-repeat
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="%23ededed" stroke-width="3"/></svg>');
 
   &:hover .destroy {
     opacity: 1;
   }
+}
 
-  &.completed {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="%23bddad5" stroke-width="3"/><path fill="%235dc2af" d="m87 38-5-3-30 46-15-15-4 4 20 20z"/></svg>');
+.checkmark {
+  position: relative;
+  width: 1.4em;
+  height: 1.4em;
+  margin: 0.5em;
 
-    span {
-      color: #d9d9d9;
-      text-decoration: line-through;
-    }
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  &::before {
+    border-radius: 50%;
+    border: .05em solid #ededed;
+  }
+
+  &::after {
+    opacity: 0;
+    inset: .53em .3em;
+
+    border: 0 solid #5dc2af;
+    border-width: 0 0 .08em .08em;
+    transform: rotate(-55deg) skewX(-15deg) translate(10%, -10%);
   }
 }
 
-span {
+input, span {
   flex: 1;
   display: flex;
   align-items: center;
+}
+
+input {
+  display: none;
 }
 
 .destroy {
@@ -38,5 +56,25 @@ span {
 
   &:hover {
     color: #af5b5e;
+  }
+}
+
+:host.editable {
+  box-shadow: inset 0 0 .1em rgba(0,0,0,0.3);
+  border: 1px solid black;
+
+  input { display: flex; }
+  span { display: none;}
+}
+
+:host.completed {
+  .checkmark {
+    &::before { border-color: #bddad5; }
+    &::after { opacity: 1; }
+  }
+
+  span {
+    color: #d9d9d9;
+    text-decoration: line-through;
   }
 }
