@@ -1,19 +1,17 @@
+<app-dark-mode></app-dark-mode>
 <h1>todos</h1>
 
-<main class="todoapp">
+<main>
   <header>
     <app-complete-all></app-complete-all>
     <app-item-input [placeholder]="'What needs to be done?'" (submit)="addTodo($event)"></app-item-input>
   </header>
-  <section class="main">
-    <app-todos-list></app-todos-list>
-  </section>
+  <app-todos-list></app-todos-list>
   <footer>
     <app-todo-count></app-todo-count>
     <app-todo-filters></app-todo-filters>
     <a (click)="clearDone()">Clear completed</a>
   </footer>
 </main>
-<footer class="info">
-  <p>Double-click to edit a todo</p>
-</footer>
+
+<aside>Double-click to edit a todo</aside>

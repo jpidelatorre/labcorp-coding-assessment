@@ -1,0 +1,40 @@
+:host {
+  position: relative;
+
+  display: block;
+  width: 1em;
+  height: 1em;
+  font-size: 2em;
+
+  border-radius: 50%;
+
+  background: var(--fgColor);
+  color: var(--bgColor);
+}
+
+:host-context(.moon) {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 20% 20% 40% 40%;
+
+    border-radius: 50%;
+    box-shadow: -.1em .1em 0 .1em currentColor;
+  }
+}
+
+:host-context(.sun) {
+  &::after,
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: .2em;
+    background:
+      radial-gradient(transparent 30%, currentcolor 30%, currentcolor 40%, transparent 40%),
+      linear-gradient(to right, currentColor 15%, #0000 15%, #0000 85%, currentcolor 85%) no-repeat 0 center/100% .05em,
+      linear-gradient(to bottom, currentColor 15%, #0000 15%, #0000 85%, currentcolor 85%) no-repeat center 0/.05em 100%;
+    border-radius: 100%;
+  }
+  &::after { transform: rotate(44deg); }
+}
